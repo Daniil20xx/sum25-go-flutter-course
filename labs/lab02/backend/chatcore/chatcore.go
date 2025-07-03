@@ -79,12 +79,14 @@ func (b *Broker) Run() {
 
 // SendMessage sends a message to the broker
 func (b *Broker) SendMessage(msg Message) error {
-	// TODO: Send message to appropriate channel/queue
+	if err := b.ctx.Err(); err != nil {
+		return errors.New("Broker is done")
+	}
 	select {
-		case <-b.ctx.Done():
-			return errors.New("Broker is done")
-		case b.input <- msg:
-			return nil
+	case b.input <- msg:
+		return nil
+	default:
+		return errors.New("input channel full")
 	}
 }
 
