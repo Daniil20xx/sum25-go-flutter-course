@@ -14,7 +14,7 @@ class ApiService {
   // TODO: Add _getHeaders() method that returns Map<String, String>
   // Return headers with 'Content-Type': 'application/json' and 'Accept': 'application/json'
 
-  static const String baseUrl = 'http://localhost:22026';
+  static const String baseUrl = 'http://localhost:8080';
   static const Duration timeout = Duration(seconds: 30);
   late http.Client _client;
 
