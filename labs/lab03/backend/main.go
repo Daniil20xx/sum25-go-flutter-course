@@ -24,7 +24,7 @@ func main() {
 	// TODO: Add logging to show server is starting
 	// TODO: Start the server and handle any errors
 	server := &http.Server{
-		Addr:         ":8080",
+		Addr:         ":22026",
 		Handler:      router,
 		ReadTimeout:  15 * time.Second,
 		WriteTimeout: 15 * time.Second,

@@ -116,7 +116,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final updated = await showDialog<String>(
       context: context, 
       builder: (_) => AlertDialog(
-        title: const Text('TODO: Edit Message'),
+        title: const Text('Edit Message'),
         content: TextField(controller: cntrl),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
@@ -200,7 +200,7 @@ class _ChatScreenState extends State<ChatScreen> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('TODO: Error'),
+        title: const Text('TODO:Error'),
         content: Text(message),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('OK')),

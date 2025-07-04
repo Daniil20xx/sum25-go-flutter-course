@@ -36,8 +36,8 @@ type HTTPStatusResponse struct {
 	// TODO: Add StatusCode field of type int with json tag "status_code"
 	// TODO: Add ImageURL field of type string with json tag "image_url"
 	// TODO: Add Description field of type string with json tag "description"
-	StatusCode  int    `json:"status_code`
-	ImageURL    string `json:"image_usr"`
+	StatusCode  int    `json:"status_code"`
+	ImageURL    string `json:"image_url"`
 	Description string `json:"description"`
 }
 

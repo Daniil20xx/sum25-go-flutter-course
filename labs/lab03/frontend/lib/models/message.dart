@@ -11,7 +11,12 @@ class Message {
   final DateTime timestamp;
 
   // TODO: Add constructor with required parameters:
-  Message({required this.id, required this.username, required this.content, required this.timestamp});
+  Message({
+    required this.id, 
+    required this.username, 
+    required this.content, 
+    required this.timestamp
+  });
 
   // TODO: Add factory constructor fromJson(Map<String, dynamic> json)
   // Parse id from json['id']
@@ -35,7 +40,7 @@ class Message {
       'id': id, 
       'username': username,
       'content': content,
-      'timestamp': timestamp
+      'timestamp': timestamp.toIso8601String()
     };
   }
 }
@@ -45,7 +50,10 @@ class CreateMessageRequest {
   final String content;
 
   // TODO: Add constructor with required parameters:
-  CreateMessageRequest({required this.username, required this.content});
+  CreateMessageRequest({
+    required this.username, 
+    required this.content
+  });
 
   // TODO: Add toJson() method that returns Map<String, dynamic>
   // Return map with 'username' and 'content' keys
@@ -61,8 +69,8 @@ class CreateMessageRequest {
   // Check if content is not empty, return "Content is required" if empty
   // Return null if validation passes
   String? validate() {
-    if (username.trim().isEmpty) return "Username is required";
-    if (content.trim().isEmpty) return "Content is required";
+    if (username.isEmpty) return "Username is required";
+    if (content.isEmpty) return "Content is required";
     return null;
   }
 }
@@ -71,7 +79,9 @@ class UpdateMessageRequest {
   final String content;
 
   // TODO: Add constructor with required parameters:
-  UpdateMessageRequest({required this.content});
+  UpdateMessageRequest({
+    required this.content
+  });
 
   // TODO: Add toJson() method that returns Map<String, dynamic>
   // Return map with 'content' key
@@ -85,7 +95,7 @@ class UpdateMessageRequest {
   // Check if content is not empty, return "Content is required" if empty
   // Return null if validation passes
   String? validate() {
-    if (content.trim().isEmpty) return "Content is required";
+    if (content.isEmpty) return "Content is required";
     return null;
   }
 }
@@ -96,7 +106,11 @@ class HTTPStatusResponse {
   final String description;
 
   // TODO: Add constructor with required parameters:
-  HTTPStatusResponse({required this.statusCode, required this.imageUrl, required this.description});
+  HTTPStatusResponse({
+    required this.statusCode, 
+    required this.imageUrl, 
+    required this.description
+  });
 
   // TODO: Add factory constructor fromJson(Map<String, dynamic> json)
   // Parse statusCode from json['status_code']
@@ -117,14 +131,20 @@ class ApiResponse<T> {
   final String? error;
 
   // TODO: Add constructor with optional parameters:
-  ApiResponse({required this.success, this.data, this.error});
+  ApiResponse({
+    required this.success, 
+    this.data, 
+    this.error
+  });
 
   // TODO: Add factory constructor fromJson(Map<String, dynamic> json, T Function(Map<String, dynamic>)? fromJsonT)
   // Parse success from json['success']
   // Parse data from json['data'] using fromJsonT if provided and data is not null
   // Parse error from json['error']
   factory ApiResponse.fromJson(
-      Map<String, dynamic> json, T Function(Map<String, dynamic>)? fromJsonT) {
+    Map<String, dynamic> json, 
+    T Function(Map<String, dynamic>)? fromJsonT
+  ) {
     return ApiResponse(
       success: json['success'],
       data: json['data'] != null && fromJsonT != null
